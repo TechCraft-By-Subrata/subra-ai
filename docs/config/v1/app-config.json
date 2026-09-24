@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "configVersion": 11,
+  "configVersion": 13,
   "status": "draft",
   "theme": {
     "colors": {
@@ -9,6 +9,13 @@
       "text": "#17212B",
       "secondaryText": "#52606D",
       "accent": "#4263EB"
+    },
+    "darkColors": {
+      "background": "#070B0F",
+      "surface": "#151E28",
+      "text": "#F4F7F6",
+      "secondaryText": "#9AA8B7",
+      "accent": "#53D6E2"
     }
   },
   "home": {
@@ -23,6 +30,11 @@
       "selectedAnswerModes": ["modelOnly"],
       "systemPrompt": "Be a clear, helpful general assistant. Answer from the selected model's knowledge and state uncertainty when appropriate. Do not claim to have searched a Space or Vault."
     },
+    "utilityActions": [
+      {"id": "changeImageBackground", "title": "Change Image Background", "enabled": true, "order": 20},
+      {"id": "settings", "title": "Settings", "enabled": true, "order": 21},
+      {"id": "openAiCompatibleTests", "title": "OpenAI-compatible Tests", "enabled": false, "order": 22}
+    ],
     "categories": [
       {
         "id": "study",

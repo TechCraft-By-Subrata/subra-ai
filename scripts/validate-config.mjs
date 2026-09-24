@@ -34,6 +34,12 @@ const config = await json(join(root, 'app-config.json'));
 assert.equal(config.schemaVersion, 1);
 assert.ok(Number.isSafeInteger(config.configVersion) && config.configVersion > 0);
 assert.ok(['draft', 'published'].includes(config.status));
+for (const paletteName of ['colors', 'darkColors']) {
+  const palette = config.theme?.[paletteName];
+  for (const key of ['background', 'surface', 'text', 'secondaryText', 'accent']) {
+    assert.match(palette?.[key] ?? '', /^#[a-fA-F0-9]{6}$/, `${paletteName}.${key} must be a six-digit color`);
+  }
+}
 
 const globalChat = config.home?.globalChat;
 assert.equal(globalChat?.action, 'openGlobalChat');
@@ -42,12 +48,23 @@ assert.equal(typeof globalChat?.title, 'string');
 assert.ok(globalChat.title.length > 0);
 assert.equal(typeof globalChat?.systemPrompt, 'string');
 checkModes(globalChat.availableAnswerModes, globalChat.selectedAnswerModes, 'globalChat', true);
+const utilityActions = config.home?.utilityActions;
+assert.ok(Array.isArray(utilityActions));
+unique(utilityActions.map(action => action.id), 'Home utility action IDs');
+for (const action of utilityActions) {
+  assert.ok(['changeImageBackground', 'settings', 'openAiCompatibleTests'].includes(action.id));
+  assert.equal(typeof action.title, 'string');
+  assert.ok(action.title.length > 0);
+  assert.equal(typeof action.enabled, 'boolean');
+  assert.ok(Number.isSafeInteger(action.order) && action.order >= 0);
+}
 
 const categories = config.home?.categories;
 assert.ok(Array.isArray(categories) && categories.length > 0);
 unique(categories.map(category => category.id), 'category IDs');
 unique(categories.map(category => category.order), 'category order');
 const categoryById = new Map(categories.map(category => [category.id, category]));
+unique([globalChat.order, ...utilityActions.map(action => action.order), ...categories.map(category => category.order)], 'Home order');
 for (const category of categories) {
   assert.match(category.id, /^[a-z][a-z0-9-]*$/);
   assert.equal(typeof category.enabled, 'boolean');
