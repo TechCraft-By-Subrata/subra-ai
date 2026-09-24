@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 import {readFile, readdir} from 'node:fs/promises';
 import {join, resolve} from 'node:path';
 
@@ -112,6 +113,19 @@ for (const space of spaces) {
     assert.ok(Number.isSafeInteger(file.sizeBytes) && file.sizeBytes > 0);
     assert.match(file.sha256, /^[a-f0-9]{64}$/);
     assert.ok(typeof file.url === 'string' && file.url.startsWith('https://'));
+    if ('displayName' in file) assert.ok(typeof file.displayName === 'string' && file.displayName.length > 0);
+    if ('module' in file) assert.ok(file.module === null || (Number.isSafeInteger(file.module) && file.module > 0));
+    if ('lessonNumber' in file) assert.ok(file.lessonNumber === null || (Number.isSafeInteger(file.lessonNumber) && file.lessonNumber > 0));
+    if ('sourcePath' in file) assert.match(file.sourcePath, /^(README\.md|module\d+\/chapter-\d+\.md)$/);
+    if ('sourceUrl' in file) assert.ok(typeof file.sourceUrl === 'string' && file.sourceUrl.startsWith('https://github.com/'));
+
+    const contentPrefix = 'https://techcraft-by-subrata.github.io/subra-ai/content/';
+    if (file.url.startsWith(contentPrefix)) {
+      const relativeContentPath = new URL(file.url).pathname.replace(/^\/subra-ai\//, '');
+      const content = await readFile(resolve('docs', relativeContentPath));
+      assert.equal(content.length, file.sizeBytes, `${space.id}/${file.id}: size mismatch`);
+      assert.equal(createHash('sha256').update(content).digest('hex'), file.sha256, `${space.id}/${file.id}: hash mismatch`);
+    }
   }
   unique(manifest.files.map(file => file.id), `${space.id}: file IDs`);
 }

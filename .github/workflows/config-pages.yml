@@ -5,16 +5,20 @@ on:
     branches: [main]
     paths:
       - 'docs/config/**'
+      - 'docs/content/**'
       - 'docs/index.md'
       - '.github/workflows/config-pages.yml'
       - 'scripts/validate-config.mjs'
+      - 'scripts/build-javascript-essentials-manifest.mjs'
   push:
     branches: [main]
     paths:
       - 'docs/config/**'
+      - 'docs/content/**'
       - 'docs/index.md'
       - '.github/workflows/config-pages.yml'
       - 'scripts/validate-config.mjs'
+      - 'scripts/build-javascript-essentials-manifest.mjs'
 
 permissions:
   contents: read
