@@ -1,0 +1,56 @@
+name: Validate and publish config
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/config/**'
+      - 'docs/index.md'
+      - '.github/workflows/config-pages.yml'
+      - 'scripts/validate-config.mjs'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/config/**'
+      - 'docs/index.md'
+      - '.github/workflows/config-pages.yml'
+      - 'scripts/validate-config.mjs'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: config-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate public config
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/validate-config.mjs
+
+  publish:
+    name: Publish GitHub Pages
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "vaultId": "dsa",
+  "manifestVersion": 1,
+  "status": "draft",
+  "title": "DSA",
+  "description": "Ready-made study materials for data structures and algorithms.",
+  "releaseNotes": "Initial placeholder manifest. No downloadable files have been published yet.",
+  "files": []
+}

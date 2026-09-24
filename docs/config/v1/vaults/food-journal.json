@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "vaultId": "food-journal",
+  "manifestVersion": 1,
+  "status": "draft",
+  "title": "Food Journal",
+  "description": "Draft public reference materials for a personal food journal.",
+  "releaseNotes": "Placeholder manifest. No downloadable files have been published yet.",
+  "files": []
+}

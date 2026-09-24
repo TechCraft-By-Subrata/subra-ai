@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "vaultId": "interview-foundations",
+  "manifestVersion": 1,
+  "status": "draft",
+  "title": "Interview Foundations",
+  "description": "Ready-made general interview preparation materials.",
+  "releaseNotes": "Initial placeholder manifest. No downloadable files have been published yet.",
+  "files": []
+}

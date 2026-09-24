@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "vaultId": "medication-records",
+  "manifestVersion": 1,
+  "status": "draft",
+  "title": "Medication Records",
+  "description": "Draft public reference materials for personal medication record keeping.",
+  "releaseNotes": "Placeholder manifest. No downloadable files have been published yet.",
+  "files": []
+}

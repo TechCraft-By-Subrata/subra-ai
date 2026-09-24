@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "vaultId": "sql-fundamentals",
+  "manifestVersion": 1,
+  "status": "draft",
+  "title": "SQL Fundamentals",
+  "description": "Ready-made reference materials and exercises for learning SQL.",
+  "releaseNotes": "Initial placeholder manifest. No downloadable files have been published yet.",
+  "files": []
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "vaultId": "japan-travel",
+  "manifestVersion": 1,
+  "status": "draft",
+  "title": "Japan Travel Guide",
+  "description": "Ready-made reference materials for planning a visit to Japan.",
+  "releaseNotes": "Initial placeholder manifest. No downloadable files have been published yet.",
+  "files": []
+}

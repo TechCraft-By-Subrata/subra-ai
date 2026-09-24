@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "configVersion": 11,
+  "status": "draft",
+  "theme": {
+    "colors": {
+      "background": "#FFFFFF",
+      "surface": "#F5F7FA",
+      "text": "#17212B",
+      "secondaryText": "#52606D",
+      "accent": "#4263EB"
+    }
+  },
+  "home": {
+    "title": "Welcome to Subra AI",
+    "globalChat": {
+      "id": "global-chat",
+      "title": "Chat",
+      "enabled": true,
+      "order": 0,
+      "action": "openGlobalChat",
+      "availableAnswerModes": ["modelOnly"],
+      "selectedAnswerModes": ["modelOnly"],
+      "systemPrompt": "Be a clear, helpful general assistant. Answer from the selected model's knowledge and state uncertainty when appropriate. Do not claim to have searched a Space or Vault."
+    },
+    "categories": [
+      {
+        "id": "study",
+        "title": "Study Space",
+        "collectionTitle": "Your Study Spaces",
+        "systemPrompt": "Act as a patient tutor. Explain concepts step by step, adapt to the learner's question, and use the selected Study Space's sources when answering.",
+        "availableAnswerModes": ["vaultOnly", "vaultAndModel"],
+        "selectedAnswerModes": ["vaultOnly"],
+        "enabled": true,
+        "order": 1,
+        "spaceActions": ["chat", "openVault"],
+        "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio", "addAudio2"],
+        "allowUserCreatedSpaces": true
+      },
+      {
+        "id": "trips",
+        "title": "Trips",
+        "collectionTitle": "Your Trip Spaces",
+        "systemPrompt": "Help the traveler organize and understand their selected trip materials. Distinguish details found in the Vault from suggestions or information that may need current verification.",
+        "availableAnswerModes": ["vaultAndModel", "vaultOnly"],
+        "selectedAnswerModes": ["vaultAndModel"],
+        "enabled": false,
+        "order": 2,
+        "spaceActions": ["chat", "openVault"],
+        "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"],
+        "allowUserCreatedSpaces": true
+      },
+      {
+        "id": "interview",
+        "title": "Interview Prep",
+        "collectionTitle": "Your Interview Spaces",
+        "systemPrompt": "Help the user prepare for an interview using the selected Space's job description, resume, research, and notes. Ask focused practice questions and give constructive feedback when requested.",
+        "availableAnswerModes": ["vaultAndModel", "vaultOnly"],
+        "selectedAnswerModes": ["vaultAndModel"],
+        "enabled": false,
+        "order": 3,
+        "spaceActions": ["chat", "openVault"],
+        "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"],
+        "allowUserCreatedSpaces": true
+      },
+      {
+        "id": "projects",
+        "title": "Projects",
+        "collectionTitle": "Your Project Spaces",
+        "systemPrompt": "Help the user understand and organize the selected project's materials. Summarize decisions, identify open questions, and suggest practical next steps when asked.",
+        "availableAnswerModes": ["vaultOnly", "vaultAndModel"],
+        "selectedAnswerModes": ["vaultOnly"],
+        "enabled": false,
+        "order": 4,
+        "spaceActions": ["chat", "openVault"],
+        "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"],
+        "allowUserCreatedSpaces": true
+      },
+      {
+        "id": "research",
+        "title": "Research",
+        "collectionTitle": "Your Research Spaces",
+        "systemPrompt": "Help analyze the selected research materials. Separate source-supported findings from hypotheses, and make uncertainty clear.",
+        "availableAnswerModes": ["vaultOnly", "vaultAndModel"],
+        "selectedAnswerModes": ["vaultOnly"],
+        "enabled": false,
+        "order": 5,
+        "spaceActions": ["chat", "openVault"],
+        "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"],
+        "allowUserCreatedSpaces": true
+      },
+      {
+        "id": "language",
+        "title": "Language Practice",
+        "collectionTitle": "Your Language Spaces",
+        "systemPrompt": "Act as a supportive language practice partner. Match the learner's level, provide natural examples, and explain corrections clearly.",
+        "availableAnswerModes": ["vaultAndModel", "vaultOnly"],
+        "selectedAnswerModes": ["vaultAndModel"],
+        "enabled": false,
+        "order": 6,
+        "spaceActions": ["chat", "openVault"],
+        "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio", "addAudio2"],
+        "allowUserCreatedSpaces": true
+      },
+      {
+        "id": "creative",
+        "title": "Creative Work",
+        "collectionTitle": "Your Creative Spaces",
+        "systemPrompt": "Collaborate on the user's creative work. Respect the existing voice and goals shown in the selected Space's materials, and offer specific feedback or ideas when asked.",
+        "availableAnswerModes": ["vaultAndModel", "vaultOnly"],
+        "selectedAnswerModes": ["vaultAndModel"],
+        "enabled": false,
+        "order": 7,
+        "spaceActions": ["chat", "openVault"],
+        "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"],
+        "allowUserCreatedSpaces": true
+      },
+      {
+        "id": "events",
+        "title": "Events",
+        "collectionTitle": "Your Event Spaces",
+        "systemPrompt": "Help the user organize the selected event's materials, schedule, and open decisions. Distinguish confirmed details from tentative plans.",
+        "availableAnswerModes": ["vaultOnly", "vaultAndModel"],
+        "selectedAnswerModes": ["vaultOnly"],
+        "enabled": false,
+        "order": 8,
+        "spaceActions": ["chat", "openVault"],
+        "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"],
+        "allowUserCreatedSpaces": true
+      },
+      {
+        "id": "career",
+        "title": "Career",
+        "collectionTitle": "Your Career Spaces",
+        "systemPrompt": "Help the user reflect on career goals and materials. Give concrete, supportive feedback grounded in the selected Space's sources when available.",
+        "availableAnswerModes": ["vaultAndModel", "vaultOnly"],
+        "selectedAnswerModes": ["vaultAndModel"],
+        "enabled": false,
+        "order": 9,
+        "spaceActions": ["chat", "openVault"],
+        "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"],
+        "allowUserCreatedSpaces": true
+      },
+      {
+        "id": "health",
+        "title": "Health",
+        "collectionTitle": "Your Health Spaces",
+        "systemPrompt": "Help the user organize and understand information in the selected Health Space. Describe what the records say, acknowledge uncertainty, and avoid diagnosis or advice to change medication or treatment.",
+        "availableAnswerModes": ["vaultOnly", "vaultAndModel"],
+        "selectedAnswerModes": ["vaultOnly"],
+        "enabled": false,
+        "order": 10,
+        "spaceActions": ["chat", "openVault"],
+        "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"],
+        "allowUserCreatedSpaces": true
+      }
+    ]
+  },
+  "readyMadeSpaces": [
+    {
+      "id": "dsa",
+      "categoryId": "study",
+      "title": "DSA",
+      "description": "Study data structures and algorithms using included materials and your own additions.",
+      "systemPromptOverride": "Act as a data structures and algorithms tutor. Explain the approach, use small examples, and discuss time and space complexity where relevant. Use the selected DSA Space's sources when answering.",
+      "availability": "comingSoon",
+      "manifestPath": "vaults/dsa.json",
+      "spaceActions": ["chat", "openVault"],
+      "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio", "addAudio2"]
+    },
+    {
+      "id": "system-design",
+      "categoryId": "study",
+      "title": "System Design",
+      "description": "Explore system design concepts using included materials and your own additions.",
+      "systemPromptOverride": "Act as a system design tutor. Clarify requirements, explain tradeoffs and failure modes, and use the selected System Design Space's sources when answering.",
+      "availability": "comingSoon",
+      "manifestPath": "vaults/system-design.json",
+      "spaceActions": ["chat", "openVault"],
+      "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio", "addAudio2"]
+    },
+    {
+      "id": "sql-fundamentals",
+      "categoryId": "study",
+      "title": "SQL Fundamentals",
+      "description": "Learn SQL with reference materials, exercises, and your own notes.",
+      "availability": "comingSoon",
+      "manifestPath": "vaults/sql-fundamentals.json",
+      "spaceActions": ["chat", "openVault"],
+      "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"]
+    },
+    {
+      "id": "japan-travel",
+      "categoryId": "trips",
+      "title": "Japan Travel Guide",
+      "description": "Start planning a Japan visit with included reference materials and your own trip files.",
+      "systemPromptOverride": "Help the user plan a Japan visit using the selected Space's materials. Keep bookings and itinerary facts separate from suggestions, and flag details that may change before travel.",
+      "availability": "comingSoon",
+      "manifestPath": "vaults/japan-travel.json",
+      "spaceActions": ["chat", "openVault"],
+      "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"]
+    },
+    {
+      "id": "interview-foundations",
+      "categoryId": "interview",
+      "title": "Interview Foundations",
+      "description": "Prepare with general interview materials and your own role-specific documents.",
+      "availableAnswerModesOverride": ["vaultOnly", "vaultAndModel"],
+      "selectedAnswerModesOverride": ["vaultOnly"],
+      "availability": "comingSoon",
+      "manifestPath": "vaults/interview-foundations.json",
+      "spaceActions": ["chat", "openVault"],
+      "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"]
+    },
+    {
+      "id": "fitness-foundations",
+      "categoryId": "health",
+      "title": "Fitness Foundations",
+      "description": "Organize exercise notes, plans, and activity records in a private Health Space.",
+      "availability": "comingSoon",
+      "manifestPath": "vaults/fitness-foundations.json",
+      "spaceActions": ["chat", "openVault"],
+      "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"]
+    },
+    {
+      "id": "food-journal",
+      "categoryId": "health",
+      "title": "Food Journal",
+      "description": "Keep meal notes, photos, and related materials together for personal reflection.",
+      "availability": "comingSoon",
+      "manifestPath": "vaults/food-journal.json",
+      "spaceActions": ["chat", "openVault"],
+      "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"]
+    },
+    {
+      "id": "medication-records",
+      "categoryId": "health",
+      "title": "Medication Records",
+      "description": "Organize medication lists, schedules, and notes for personal record keeping.",
+      "availability": "comingSoon",
+      "manifestPath": "vaults/medication-records.json",
+      "spaceActions": ["chat", "openVault"],
+      "vaultAddActions": ["addPdf", "addText", "addImage", "addAudio"]
+    }
+  ]
+}
